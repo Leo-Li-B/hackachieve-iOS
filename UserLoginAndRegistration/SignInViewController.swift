@@ -21,6 +21,8 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInButtonTapped(_ sender: Any) {
         print("sign in button tapped")
+        let registerViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+        self.present(registerViewController, animated:true)
     }
     @IBAction func registerNewButtonTapped(_ sender: Any) {
         print("register account button tapped")

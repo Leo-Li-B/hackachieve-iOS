@@ -17,6 +17,8 @@
 		B6DA3901220DAE9700A897C8 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DA3900220DAE9700A897C8 /* SignInViewController.swift */; };
 		B6DA3903220DB16C00A897C8 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DA3902220DB16B00A897C8 /* RegisterUserViewController.swift */; };
 		F4CE45732227B44800438704 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE45722227B44800438704 /* HomePageViewController.swift */; };
+		F4CE4575222835F400438704 /* HomePageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE4574222835F400438704 /* HomePageCollectionViewCell.swift */; };
+		F4CE457922284CE000438704 /* DetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CE457822284CE000438704 /* DetailCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		B6DA3900220DAE9700A897C8 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		B6DA3902220DB16B00A897C8 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
 		F4CE45722227B44800438704 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		F4CE4574222835F400438704 /* HomePageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCollectionViewCell.swift; sourceTree = "<group>"; };
+		F4CE457822284CE000438704 /* DetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				B6DA38CE220D78CF00A897C8 /* AppDelegate.swift */,
+				F4CE457822284CE000438704 /* DetailCollectionViewController.swift */,
 				B6DA38D0220D78CF00A897C8 /* ViewController.swift */,
 				B6DA38D2220D78CF00A897C8 /* Main.storyboard */,
 				B6DA38D5220D78E100A897C8 /* Assets.xcassets */,
@@ -112,6 +117,7 @@
 				B6DA3900220DAE9700A897C8 /* SignInViewController.swift */,
 				B6DA3902220DB16B00A897C8 /* RegisterUserViewController.swift */,
 				F4CE45722227B44800438704 /* HomePageViewController.swift */,
+				F4CE4574222835F400438704 /* HomePageCollectionViewCell.swift */,
 			);
 			path = UserLoginAndRegistration;
 			sourceTree = "<group>";
@@ -265,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CE4575222835F400438704 /* HomePageCollectionViewCell.swift in Sources */,
+				F4CE457922284CE000438704 /* DetailCollectionViewController.swift in Sources */,
 				B6DA3903220DB16C00A897C8 /* RegisterUserViewController.swift in Sources */,
 				B6DA38D1220D78CF00A897C8 /* ViewController.swift in Sources */,
 				B6DA38CF220D78CF00A897C8 /* AppDelegate.swift in Sources */,
