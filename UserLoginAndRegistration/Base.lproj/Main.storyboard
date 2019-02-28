@@ -60,7 +60,6 @@
                                 </state>
                                 <connections>
                                     <action selector="registerNewButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KF6-Fe-ixl"/>
-                                    <segue destination="csF-s6-YZc" kind="presentation" identifier="registerView" id="b7B-cu-4K6"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTF-4r-4FZ">
@@ -120,10 +119,10 @@
             </objects>
             <point key="canvasLocation" x="4128.8000000000002" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Home Page View Controller-->
         <scene sceneID="E21-wI-ykJ">
             <objects>
-                <viewController id="Fce-ud-0CK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomePageViewController" id="Fce-ud-0CK" customClass="HomePageViewController" customModule="UserLoginAndRegistration" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zR2-Ed-tXE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,7 +132,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Home" id="TYI-od-RKV">
-                                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="qM7-fe-9Y1"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="qM7-fe-9Y1">
+                                            <connections>
+                                                <action selector="signoutButtonTapped:" destination="Fce-ud-0CK" id="92N-xY-fEH"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -141,6 +144,10 @@
                                 <rect key="frame" x="87" y="96" width="200" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Load Member Profile"/>
+                                <connections>
+                                    <action selector="loadMemberButtonTapped:" destination="Fce-ud-0CK" eventType="touchUpInside" id="bWn-mp-z7A"/>
+                                    <action selector="signoutButtonTapped:" destination="Fce-ud-0CK" eventType="touchUpInside" id="Kgk-yl-Qde"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZK-ZF-ES6">
                                 <rect key="frame" x="16" y="143" width="343" height="21"/>
@@ -160,10 +167,10 @@
             </objects>
             <point key="canvasLocation" x="4989.6000000000004" y="141.67916041979012"/>
         </scene>
-        <!--View Controller-->
+        <!--Register User View Controller-->
         <scene sceneID="sFR-sd-loQ">
             <objects>
-                <viewController id="csF-s6-YZc" customClass="ViewController" customModule="UserLoginAndRegistration" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterUserViewController" id="csF-s6-YZc" customClass="RegisterUserViewController" customModule="UserLoginAndRegistration" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jz7-Oa-8aQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,6 +217,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signupButtonTapped:" destination="csF-s6-YZc" eventType="touchUpInside" id="X7o-d1-f2a"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repeat Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tL1-A0-lEL">
                                 <rect key="frame" x="20" y="318" width="374" height="21"/>
@@ -256,6 +266,9 @@
                                 <state key="normal" title="I have an account">
                                     <color key="titleColor" red="0.3121535762" green="0.57670571650000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="csF-s6-YZc" eventType="touchUpInside" id="rbB-Em-j0u"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -297,6 +310,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tiK-xd-cpS"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="QzL-Nu-zVx" id="OJt-pH-RVM"/>
+                        <outlet property="firstNameTextField" destination="QVk-8q-M1y" id="Z8R-8E-jlz"/>
+                        <outlet property="lastNameTextField" destination="WPf-vv-N7d" id="3Eu-Le-c1U"/>
+                        <outlet property="passwordTextField" destination="Q0J-Cw-ugi" id="nm6-8E-dzs"/>
+                        <outlet property="repeatPasswordTextField" destination="dCu-5Z-gaR" id="HJh-ll-M3O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A67-kJ-9R8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

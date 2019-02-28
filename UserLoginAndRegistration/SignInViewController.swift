@@ -24,16 +24,10 @@ class SignInViewController: UIViewController {
     }
     @IBAction func registerNewButtonTapped(_ sender: Any) {
         print("register account button tapped")
+        
+        let registerViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegisterUserViewController") as! RegisterUserViewController
+        self.present(registerViewController, animated:true)
+        //created a new constant, which is presented to the user as registerViewController
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
