@@ -49,13 +49,13 @@ class SignInViewController: UIViewController {
         
         //Send HTTP request to server!!
         //Placeholder text
-        let myUrl = URL(string: "http://localhost:8080/api/authentication")
+        let myUrl = URL(string: "https://hackachieve:8000/user/register")
         //convert to url request
         var request = URLRequest(url:myUrl!)
         //configure http method with headers and parameters
         request.httpMethod = "POST"//Compose a query string
-        request.addValue("application/json", forHTTPHeaderField: "content-type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Basic Og==", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         //convert keypairs to json payload
         let postString = ["userName": userName!, "userPassword": userPassword!] as [String:String]

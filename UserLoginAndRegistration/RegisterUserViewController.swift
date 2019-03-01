@@ -66,18 +66,20 @@ class RegisterUserViewController: UIViewController {
         
         //Send HTTP request to server!!
         //Placeholder text
-        let myUrl = URL(string: "http://localhost:8080/api/users")
+        let myUrl = URL(string: "https://hackachieve.com:8000/user/register")
         var request = URLRequest(url:myUrl!)
         request.httpMethod = "POST"//Compose a query string
-        request.addValue("application/json", forHTTPHeaderField: "content-type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("Basic Og==", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
+
         let postString = ["firstName": firstNameTextField.text!,
                           "lastName": lastNameTextField.text!,
                           "userName": emailTextField.text!,
                           "userPassword": passwordTextField.text!,
         ] as [String: String]
         do {
+            
             request.httpBody = try JSONSerialization.data(withJSONObject: postString, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
