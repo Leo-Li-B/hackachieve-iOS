@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Takes user to homepage without login
+        let accessToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
+        if accessToken != nil
+        {
+            let mainStoryboard:UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+            let homePage = mainStoryboard.instantiateViewController(withIdentifier: "HomePageViewController") as! HomePageViewController
+            self.window?.rootViewController = homePage
+        }
         return true
     }
 

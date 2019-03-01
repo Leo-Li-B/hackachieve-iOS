@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class HomePageViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    @IBOutlet weak var fullNameLabel: UILabel!
     
     let mainCategories = ["Health", "Career", "Finances", "Personal Development", "Spiritural", "Fun and Recreation"]
     
@@ -73,19 +75,74 @@ class HomePageViewController: UIViewController, UICollectionViewDataSource, UICo
 
     @IBAction func signoutButtonTapped(_ sender: Any) {
         print("Sign out button tapped")
+        KeychainWrapper.standard.removeObject(forKey: "accessToken")
+        KeychainWrapper.standard.removeObject(forKey: "userId")
+        
+        let signInPage = self.storyboard?.instantiateViewController(withIdentifier:
+            "SignInViewController") as! SignInViewController
+        let appDelegate = UIApplication.shared.delegate
+        appDelegate?.window??.rootViewController = signInPage
+        
     }
     @IBAction func loadMemberButtonTapped(_ sender: Any) {
         print("load member profile button tapped")
+        loadMemberProfile()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadMemberProfile()
+    {
+        let accessToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
+        let userId: String? = KeychainWrapper.standard.string(forKey: "userId")
+        
+        //send HTTP request to get user ID - Placeholder
+        let myUrl = URL(string: "http://localhost:8080/api/users/\(userId!)")
+        var request = URLRequest(url:myUrl!)
+        request.httpMethod = "GET" //compose query string
+        request.addValue("Bearer \(accessToken!)", forHTTPHeaderField: "Authorization")
+        
+        let task = URLSession.shared.dataTask(with: request) {
+            (data:Data?, response: URLResponse?, error:Error?) in
+            
+            if error != nil
+            {
+                self.displayMessage(userMessage: "could not successfully perform this request. Please try again later")
+                print("error =\(String(describing:error))")
+                return
+            }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                if let parseJSON = json {
+                    DispatchQueue.main.async
+                        {
+                        let firstName: String? = parseJSON["firstName"] as? String
+                        let lastName: String? = parseJSON["lastName"] as? String
+                        
+                        if firstName?.isEmpty != true && lastName?.isEmpty != true {
+                            self.fullNameLabel.text = firstName! + " " + lastName!
+                        }
+                    }
+                } else {
+                   self.displayMessage(userMessage: "could not successfully perform this request. Please try again later")
+                }
+            }  catch {
+                self.displayMessage(userMessage: "could not successfully perform this request. Please try again later")
+                print(error)
+            }
+        }
+        task.resume()
     }
-    */
-
+    func displayMessage(userMessage:String) -> Void {
+        DispatchQueue.main.async
+            {
+                //creating an alertController
+                let alertController = UIAlertController(title:"Alert", message:userMessage, preferredStyle: .alert)
+                
+                let OKaction = UIAlertAction(title: "OK", style: .default)
+                { (action:UIAlertAction!)in
+                    //Code in this block will trigger when OK button tapped.
+                    print("load profile button tapped")
+                }
+                   alertController.addAction(OKaction)
+                    self.present(alertController, animated: true, completion: nil)
+            }
+    }
 }
