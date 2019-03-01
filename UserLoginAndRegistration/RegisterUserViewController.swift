@@ -99,7 +99,7 @@ class RegisterUserViewController: UIViewController {
             }
             //convert response sent from a server side code to a NSdictionary object
             do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? NSDictionary
+                let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary
                 if let parseJSON = json{
                     let userId = parseJSON["userId"] as? String
                     print("User id: \(String(describing:userId!))")
